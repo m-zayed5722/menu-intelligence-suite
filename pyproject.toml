@@ -1,0 +1,56 @@
+[project]
+name = "menu-intelligence-suite"
+version = "0.1.0"
+description = "Multilingual semantic search and intelligence for food delivery menus"
+authors = [{name = "Your Name", email = "your.email@example.com"}]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "sqlmodel>=0.0.14",
+    "psycopg[binary]>=3.1.0",
+    "pgvector>=0.2.4",
+    "redis>=5.0.1",
+    "rq>=1.15.1",
+    "sentence-transformers>=2.3.1",
+    "scikit-learn>=1.4.0",
+    "faiss-cpu>=1.7.4",
+    "numpy>=1.26.0",
+    "pandas>=2.1.0",
+    "streamlit>=1.30.0",
+    "python-dotenv>=1.0.0",
+    "rank-bm25>=0.2.2",
+    "httpx>=0.26.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.1.14",
+    "black>=24.1.0",
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-asyncio>=0.23.0",
+    "pre-commit>=3.6.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+addopts = "-v --cov=src --cov-report=term-missing"
